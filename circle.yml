@@ -7,7 +7,7 @@ test:
     - sudo pip install json-spec
   override:
     - ruby .github/osia_get_links.rb
-    - awesome_bot temp-links -a 403 -w wheelmap.org
+    - awesome_bot temp-links -a 403 -w xbmc/xbmc,wheelmap.org
     - json validate --schema-file=.github/schema.json --document-file=contents.json
     - ruby .github/osia_validate_categories.rb
 general:
