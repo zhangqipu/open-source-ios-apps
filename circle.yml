@@ -6,11 +6,13 @@ test:
     - gem install awesome_bot
     - sudo pip install json-spec
   override:
-    - awesome_bot contents.json -a 403 -w developer.apple,preyproject,xbmc/xbmc,wheelmap.org
+    - ruby .github/osia_get_links.rb
+    - awesome_bot temp-links -a 403 -w wheelmap.org
     - json validate --schema-file=.github/schema.json --document-file=contents.json
     - ruby .github/osia_validate_categories.rb
 general:
   artifacts:
+    - "temp-links"
     - "ab-results-contents.json.json"
 deployment:
   master:
